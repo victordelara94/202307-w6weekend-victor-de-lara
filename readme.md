@@ -1,84 +1,35 @@
-# Backend Node: TS - Eslint -Jest
+# Week 6 - Challenge 5 (FRONT)
 
-## Setup
+## API REST Things I already know / Lo que querais
 
-- npm init
-- git init
-- .editorconfig
-- .gitignore
-- TS
+### Crea una API REST que se conecte a un fichero JSON, para manipular recursos de tipo cosas que ya sé. El JSON tendrá una sola propiedad de tipo array, donde almacenarán objetos que representarán cosas que hemos aprendido en el bootcamp.
 
-  ```shell
-  npm i -D typescript @types/node
-  ```
+### La API REST debe tener los siguientes endpoints:
 
-tsconfig
+[GET] /things -> devuelve el array de cosas que ya sé
 
-  ```shell
-  npx tsc --init
-  ```
+[GET] /things/:idThing -> devuelve una cosa que ya sé
 
-ESModule Config: package.json
+[DELETE] /things/:idThing -> borra una cosa que ya sé
 
-```json
-  "type": "module"
-```
+[POST] /things -> crea una cosa que ya sé (la recibe en el body)
 
+[PATCH] /things -> modifica una cosa que ya sé (la recibe en el body)
 
+### Usamos express con las capas:
 
-- ESLint
+app
+router
+controller
+repo
+AÑADIMOS un front con REDUX testado
 
-```shell
-npx eslint --init
-npm i -D eslint-config-prettier
-```
+Lista de 'things'
 
-Eslint config
+Añadir 'thing'
 
-```json
-{
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "node": true,
-    "jest": true
-  },
-  "extends": ["xo", "prettier"],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
-  "plugins": ["@typescript-eslint"],
-  "rules": {}
-}
-```
+Borrar 'thing'
 
-Prettier config: package.json
+Editar 'thing'
 
-```json
-  "prettier": {
-    "singleQuote": true
-  }
-```
-
-
-- Jest
-
-```shell
-npm i -D jest ts-jest @types/jest jest-ts-webcompat-resolver
-```
-
-jest config
-
-```js
-/** @type {import('ts-jest').JestConfigWithTsJest} */
-export default {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  testPathIgnorePatterns: ['dist'],
-  resolver: 'jest-ts-webcompat-resolver',
-  collectCoverageFrom: ['src/**/*.ts'],
-  coveragePathIgnorePatterns: ['index.ts'],
-};
-```
+Página de detalle
