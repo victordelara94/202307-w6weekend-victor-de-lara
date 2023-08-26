@@ -6,9 +6,9 @@
   "scripts": {
     "start:new": "node --watch dist/index.js",
     "start:nm": "nodemon dist/index.js",
-    "server": "cross-env PORT=4300 DEBUG=W6E* nodemon dist/main.js",
+    "server": "cross-env PORT=4300 DEBUG=anime* nodemon dist/index.js",
     "server2": "nodemon dist/index.js",
-    "server:prod": "cross-env PORT=4300 node dist/main.js",
+    "server:prod": "cross-env PORT=4300 node dist/index.js",
     "build": "tsc --watch",
     "start": "concurrently \"npm:server\" \"npm:build\"",
     "test": "jest --watchAll --coverage",

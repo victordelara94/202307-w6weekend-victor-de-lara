@@ -3,4 +3,5 @@ export type animeCharacters = {
   name: string;
   type: string;
   hability: string;
+  id: string;
 };
