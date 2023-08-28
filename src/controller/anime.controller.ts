@@ -1,6 +1,5 @@
 import createDebug from 'debug';
 import { NextFunction, Request, Response } from 'express';
-import { writeFile } from 'fs/promises';
 import { AnimeCharacter } from '../entities/animeCharacters';
 import { Repository } from '../repository/repository';
 const debug = createDebug('W6E:Controller:AnimeController');
@@ -23,9 +22,8 @@ export class AnimeController {
   async getById(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
-      const data = await this.repo.getAll();
-      const item = data.find((item) => item.id === id);
-      res.json(item);
+      const data = await this.repo.getById(id);
+      res.json(data);
     } catch (error) {
       next(error);
     }
@@ -33,14 +31,9 @@ export class AnimeController {
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      const newData = req.body;
-      const data = await this.repo.getAll();
-      newData.id = data[data.length - 1].id + 1;
-      data.push(newData);
-
-      await writeFile('data.json', JSON.stringify(data), { encoding: 'utf-8' });
-
-      res.json(newData);
+      const finalTask = await this.repo.create(req.body);
+      res.status(201);
+      res.json(finalTask);
     } catch (error) {
       next(error);
     }
@@ -49,10 +42,8 @@ export class AnimeController {
   async update(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
-      const data = await this.repo.getAll();
-      const newData = data.map((item) => (item.id === id ? req.body : item));
-      await writeFile('data.json', JSON.stringify(newData));
-      res.send(`Patch character id: ${id}`);
+      const finalTask = await this.repo.update(id, req.body);
+      res.json(finalTask);
     } catch (error) {
       next(error);
     }
@@ -61,12 +52,9 @@ export class AnimeController {
   async delete(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
-      const data = await this.repo.getAll();
-      const newData = data.filter((item) => item.id !== id);
-      await writeFile('data.json', JSON.stringify(newData), {
-        encoding: 'utf-8',
-      });
-      res.send(`Delete character id: ${id}`);
+      await this.repo.delete(id);
+      res.status(204);
+      res.json({});
     } catch (error) {
       next(error);
     }
