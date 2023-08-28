@@ -1,11 +1,15 @@
 import createDebug from 'debug';
 import { readFile, writeFile } from 'fs/promises';
-import { AnimeCharacter, AnimeCharactersNoId } from "../entities/animeCharacters.js";
-import { Repository } from "./repository";
+import {
+  AnimeCharacter,
+  AnimeCharactersNoId,
+} from '../entities/animeCharacters.js';
+import { HttpError } from '../types/http.error.js';
+import { Repository } from './repository';
 const debug = createDebug('W6E:Repo:AnimeCharacterRepository');
 
-export class CharacterAnimeRepository implements Repository<AnimeCharacter>{
-   private file: string;
+export class CharacterAnimeRepository implements Repository<AnimeCharacter> {
+  private file: string;
   constructor() {
     this.file = 'data.json';
     debug('Instantiated');
@@ -22,27 +26,43 @@ export class CharacterAnimeRepository implements Repository<AnimeCharacter>{
     const data: AnimeCharacter[] = await this.getAll();
     const item = data.find((item) => item.id === id);
     if (!item)
-      throw new HttpError(404, 'Not Found', 'AnimeCharacters not found in file system', {
-        cause: 'Trying getById',
-      });
+      throw new HttpError(
+        404,
+        'Not Found',
+        'AnimeCharacters not found in file system',
+        {
+          cause: 'Trying getById',
+        }
+      );
     return item;
   }
 
   async create(newData: AnimeCharactersNoId): Promise<AnimeCharacter> {
-    const newAnimeCharacters: AnimeCharacter = { ...newData, id: crypto.randomUUID() };
     const data: AnimeCharacter[] = await this.getAll();
+    const newAnimeCharacters: AnimeCharacter = {
+      ...newData,
+      id: (data[data.length - 1].id + 1).toString(),
+    };
     data.push(newAnimeCharacters);
     await this.saveOnFile(data);
     return newAnimeCharacters;
   }
 
-  async update(id: AnimeCharacter['id'], item: Partial<AnimeCharacter>): Promise<AnimeCharacter> {
+  async update(
+    id: AnimeCharacter['id'],
+    item: Partial<AnimeCharacter>
+  ): Promise<AnimeCharacter> {
     const data: AnimeCharacter[] = await this.getAll();
     const index = data.findIndex((item) => item.id === id);
     if (index < 0)
-      throw new HttpError(404, 'Not Found', 'AnimeCharacter not found in file system', {
-        cause: 'Trying update',
-      });
+      throw new HttpError(
+        404,
+        'Not Found',
+        'AnimeCharacter not found in file system',
+        {
+          cause: 'Trying update',
+        }
+      );
     data[index] = { ...data[index], ...item };
     await this.saveOnFile(data);
     return data[index];
@@ -52,9 +72,14 @@ export class CharacterAnimeRepository implements Repository<AnimeCharacter>{
     const data: AnimeCharacter[] = await this.getAll();
     const index = data.findIndex((item) => item.id === id);
     if (index < 0)
-      throw new HttpError(404, 'Not Found', 'AnimeCharacter not found in file system', {
-        cause: 'Trying delete',
-      });
+      throw new HttpError(
+        404,
+        'Not Found',
+        'AnimeCharacter not found in file system',
+        {
+          cause: 'Trying delete',
+        }
+      );
     data.splice(index, 1);
     await this.saveOnFile(data);
   }
@@ -64,5 +89,4 @@ export class CharacterAnimeRepository implements Repository<AnimeCharacter>{
       encoding: 'utf-8',
     });
   }
-}
 }
