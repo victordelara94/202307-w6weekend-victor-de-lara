@@ -30,10 +30,10 @@ export class AnimeController {
   async create(req: Request, res: Response) {
     try {
       const newData = req.body;
-      newData.id = crypto.randomUUID();
       const data: any[] = JSON.parse(
         await readFile('data.json', { encoding: 'utf-8' })
       );
+      newData.id = data[data.length - 1].id + 1;
       data.push(newData);
 
       await writeFile('data.json', JSON.stringify(data), { encoding: 'utf-8' });
