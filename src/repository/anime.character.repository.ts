@@ -2,8 +2,8 @@ import createDebug from 'debug';
 import { readFile, writeFile } from 'fs/promises';
 import {
   AnimeCharacter,
-  AnimeCharactersNoId,
-} from '../entities/animeCharacters.js';
+  AnimeCharacterNoId,
+} from '../entities/animeCharacter.js';
 import { HttpError } from '../types/http.error.js';
 import { Repository } from './repository';
 const debug = createDebug('W6E:Repo:AnimeCharacterRepository');
@@ -37,7 +37,7 @@ export class CharacterAnimeRepository implements Repository<AnimeCharacter> {
     return item;
   }
 
-  async create(newData: AnimeCharactersNoId): Promise<AnimeCharacter> {
+  async create(newData: AnimeCharacterNoId): Promise<AnimeCharacter> {
     const data: AnimeCharacter[] = await this.getAll();
     const newAnimeCharacters: AnimeCharacter = {
       ...newData,

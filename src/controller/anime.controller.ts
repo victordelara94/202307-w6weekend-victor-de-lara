@@ -1,6 +1,6 @@
 import createDebug from 'debug';
 import { NextFunction, Request, Response } from 'express';
-import { AnimeCharacter } from '../entities/animeCharacters';
+import { AnimeCharacter } from '../entities/animeCharacter';
 import { Repository } from '../repository/repository';
 const debug = createDebug('W6E:Controller:AnimeController');
 
