@@ -1,5 +1,5 @@
 import { Router as createRouter } from 'express';
-import { AnimeController } from '../controller/anime.controller.js';
+import { AnimeController } from '../controller/anime.characters.controller.js';
 import { CharacterAnimeRepository } from '../repository/anime.character.repository.js';
 const repo = new CharacterAnimeRepository();
 const animeController = new AnimeController(repo);
