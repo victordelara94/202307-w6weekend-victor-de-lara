@@ -1,8 +1,8 @@
 import createDebug from 'debug';
 import { NextFunction, Request, Response } from 'express';
-import { AnimeCharacter } from '../entities/animeCharacter';
-import { Repository } from '../repository/repository';
-const debug = createDebug('W6E:Controller:AnimeController');
+import { AnimeCharacter } from '../entities/animeCharacter.js';
+import { Repository } from '../repository/repository.js';
+const debug = createDebug('anime:Controller:AnimeController');
 
 export class AnimeController {
   // eslint-disable-next-line no-unused-vars

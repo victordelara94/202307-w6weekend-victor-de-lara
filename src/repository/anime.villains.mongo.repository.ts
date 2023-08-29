@@ -1,8 +1,8 @@
 import createDebug from 'debug';
-import { AnimeVillain } from '../entities/animeVillain';
-import { HttpError } from '../types/http.error';
-import { VillainModel } from './anime.villains.mongo.model';
-import { Repository } from './repository';
+import { AnimeVillain } from '../entities/animeVillain.js';
+import { HttpError } from '../types/http.error.js';
+import { VillainModel } from './anime.villains.mongo.model.js';
+import { Repository } from './repository.js';
 
 const debug = createDebug('anime:villainsRepo');
 export class AnimeVillainsMongoRepository implements Repository<AnimeVillain> {
@@ -33,7 +33,9 @@ export class AnimeVillainsMongoRepository implements Repository<AnimeVillain> {
     id: string,
     newData: Partial<AnimeVillain>
   ): Promise<AnimeVillain> {
-    const data = await VillainModel.findByIdAndUpdate(id, newData).exec();
+    const data = await VillainModel.findByIdAndUpdate(id, newData, {
+      new: true,
+    }).exec();
     if (!data)
       throw new HttpError(404, 'Not Found', 'Task not found in file system', {
         cause: 'Trying update',
