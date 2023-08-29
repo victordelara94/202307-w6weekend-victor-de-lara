@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { AnimeVillain } from '../entities/animeVillain';
+import { AnimeVillain } from '../entities/animeVillain.js';
 
 const villainSchema = new Schema<AnimeVillain>({
   anime: {
@@ -10,7 +10,7 @@ const villainSchema = new Schema<AnimeVillain>({
     type: String,
     required: true,
   },
-  hability: {
+  ability: {
     type: String,
     required: true,
   },
