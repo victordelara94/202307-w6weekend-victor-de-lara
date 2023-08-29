@@ -18,7 +18,6 @@ export abstract class Controller<T extends { id: string | number }> {
       const data = await this.repo.getAll();
       res.json(data);
     } catch (error) {
-      // ALt const error = new Error()
       next(error);
     }
   }
