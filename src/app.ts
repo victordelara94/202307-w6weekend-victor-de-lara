@@ -12,5 +12,5 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-app.use('/', animeRouter);
+app.use('', animeRouter);
 app.use(errorMiddleware);
