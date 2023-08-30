@@ -4,7 +4,7 @@ import { LoginData, User } from '../entities/user.js';
 import { Repository } from '../repository/repository.js';
 import { HttpError } from '../types/http.error.js';
 import { Controller } from './controller.js';
-const debug = createDebug('W6E:Controller:UsersController');
+const debug = createDebug('anime:Controller:UsersController');
 
 export class UsersController extends Controller<User> {
   constructor(protected repo: Repository<User>) {
