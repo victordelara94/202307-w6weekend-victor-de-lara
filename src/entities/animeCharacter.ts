@@ -1,6 +1,4 @@
-export type WithId = {
-  id: string;
-};
+import { WithId } from '../types/id';
 
 export type AnimeCharacterNoId = {
   anime: string;
