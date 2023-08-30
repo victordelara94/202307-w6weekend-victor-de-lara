@@ -18,7 +18,7 @@ animeVillainsRouter.get(
   animeVillainsController.getById.bind(animeVillainsController)
 );
 animeVillainsRouter.post(
-  '/',
+  '/:userId',
   animeVillainsController.create.bind(animeVillainsController)
 );
 animeVillainsRouter.patch(

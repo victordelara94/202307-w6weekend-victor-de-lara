@@ -8,12 +8,12 @@ const debug = createDebug('anime:Router:UsersRouter');
 debug('Loaded');
 const repo = new UsersMongoRepository();
 const userController = new UsersController(repo);
-export const userRouter = createRouter();
+export const usersRouter = createRouter();
 
-userRouter.patch('/login', userController.login.bind(userController));
-userRouter.post('/register', userController.create.bind(userController));
+usersRouter.patch('/login', userController.login.bind(userController));
+usersRouter.post('/register', userController.create.bind(userController));
 
-userRouter.get('/', userController.getAll.bind(userController));
-userRouter.get('/:id', userController.getById.bind(userController));
-userRouter.patch('/:id', userController.update.bind(userController));
-userRouter.delete('/:id', userController.delete.bind(userController));
+usersRouter.get('/', userController.getAll.bind(userController));
+usersRouter.get('/:id', userController.getById.bind(userController));
+usersRouter.patch('/:id', userController.update.bind(userController));
+usersRouter.delete('/:id', userController.delete.bind(userController));

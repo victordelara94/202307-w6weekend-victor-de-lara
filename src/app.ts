@@ -3,6 +3,7 @@ import express from 'express';
 import morgan from 'morgan';
 import { errorMiddleware } from './middlewares/error.middleware.js';
 import { animeCharactersRouter } from './router/characters.router.js';
+import { usersRouter } from './router/users.router.js';
 import { animeVillainsRouter } from './router/villains.router.js';
 
 export const app = express();
@@ -15,5 +16,5 @@ app.use(express.static('public'));
 
 app.use('/characters', animeCharactersRouter);
 app.use('/villains', animeVillainsRouter);
-app.use('/users', animeVillainsRouter);
+app.use('/users', usersRouter);
 app.use(errorMiddleware);
