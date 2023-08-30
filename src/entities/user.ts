@@ -3,7 +3,7 @@ import { AnimeVillain } from './animeVillain.js';
 
 export type LoginData = {
   userName: string;
-  passwd: string;
+  password: string;
   email: string;
 };
 
