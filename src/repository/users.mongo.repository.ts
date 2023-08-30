@@ -3,7 +3,7 @@ import { User } from '../entities/user.js';
 import { HttpError } from '../types/http.error.js';
 import { Repository } from './repository.js';
 import { UserModel } from './users.mongo.model.js';
-const debug = createDebug('W6E:Repo:UsersMongoRepo');
+const debug = createDebug('anime:Repo:UsersMongoRepo');
 
 export class UsersMongoRepository implements Repository<User> {
   constructor() {

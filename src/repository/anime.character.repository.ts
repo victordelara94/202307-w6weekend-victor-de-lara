@@ -6,7 +6,7 @@ import {
 } from '../entities/animeCharacter.js';
 import { HttpError } from '../types/http.error.js';
 import { Repository } from './repository.js';
-const debug = createDebug('W6E:Repo:AnimeCharacterRepository');
+const debug = createDebug('anime:Repo:AnimeCharacterRepository');
 
 export class CharacterAnimeRepository implements Repository<AnimeCharacter> {
   private file: string;

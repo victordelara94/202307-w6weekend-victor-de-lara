@@ -15,4 +15,5 @@ app.use(express.static('public'));
 
 app.use('/characters', animeCharactersRouter);
 app.use('/villains', animeVillainsRouter);
+app.use('/users', animeVillainsRouter);
 app.use(errorMiddleware);
