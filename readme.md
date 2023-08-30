@@ -1,24 +1,22 @@
-# Challenge Week 6 weekend + week 7 challenge 1
+# Week 7 - Challenge 2
 
-Crea una API REST que se conecte a un fichero JSON. El JSON tendrá una sola propiedad de tipo array, donde almacenarán objetos que representarán cosas que hemos aprendido en el bootcamp.
+## API REST Things I already know / Lo que queráis (IV)
 
-La API REST debe tener los siguientes endpoints:
+### Continuamos el API REST del Challenge anterior, que:
 
-[GET] /things -> devuelve el array de cosas que ya sé
+se conecte a un fichero JSON, para manipular recursos de tipo cosas que ya sé (o cualquier otro).
+un segundo endpoint de Films (??) utiliza un repo que conecta con MongoDB usando Mongoose
+Añadimos Users relacionándolo con Films (??)
 
-[GET] /things/:idThing -> devuelve una cosa que ya sé
+El modelo de datos estará representado como "entity" en una carpeta/fichero independiente.
+Las rutas son /register y /login
+El repositorio y el controller son clases que se instancian en el Router.
+El interface del repositorio se inyecta en el controller (inversión de dependencias).
+Les errores se controlan mediante un middleware de errores.
+/register registra usuarios /login comprueba el login y si es correcto devuelve los datos del usuario (sin token)
 
-[DELETE] /things/:idThing -> borra una cosa que ya sé
+Actualizamos [Post] /Films (??) -> create Films (??)
 
-[PATCH] /things -> modifica una cosa que ya sé (la recibe en el body)
+Se testa el 100% del backend completo: Things & Films & User & All.
 
-Usamos express con las capas:
-
-- app
-- router
-- controller
-- repo
-- El modelo de datos estará representado como "entity" en una carpeta/fichero independiente.
-- El repositorio y el controller son clases que se instancian en el Router.
-- El interface del repositorio se inyecta en el controller (inversión de dependencias).
-- Les errores se controlan mediante un middleware de errores.
+Se publica en Render (https://render.com/)
