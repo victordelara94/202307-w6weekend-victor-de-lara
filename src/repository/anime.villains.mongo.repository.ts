@@ -18,9 +18,14 @@ export class AnimeVillainsMongoRepository implements Repository<AnimeVillain> {
   async getById(id: string): Promise<AnimeVillain> {
     const data = await VillainModel.findById(id).exec();
     if (!data)
-      throw new HttpError(404, 'Not Found', 'Task not found in file system', {
-        cause: 'Trying getById',
-      });
+      throw new HttpError(
+        404,
+        'Not Found',
+        'Villain not found in file system',
+        {
+          cause: 'Trying getById',
+        }
+      );
     return data;
   }
 
@@ -37,17 +42,27 @@ export class AnimeVillainsMongoRepository implements Repository<AnimeVillain> {
       new: true,
     }).exec();
     if (!data)
-      throw new HttpError(404, 'Not Found', 'Task not found in file system', {
-        cause: 'Trying update',
-      });
+      throw new HttpError(
+        404,
+        'Not Found',
+        'Villain not found in file system',
+        {
+          cause: 'Trying update',
+        }
+      );
     return data;
   }
 
   async delete(id: string): Promise<void> {
     const result = await VillainModel.findByIdAndDelete(id).exec();
     if (!result)
-      throw new HttpError(404, 'Not Found', 'Task not found in file system', {
-        cause: 'Trying delete',
-      });
+      throw new HttpError(
+        404,
+        'Not Found',
+        'Villain not found in file system',
+        {
+          cause: 'Trying delete',
+        }
+      );
   }
 }

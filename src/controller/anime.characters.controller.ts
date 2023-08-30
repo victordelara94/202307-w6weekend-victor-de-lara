@@ -31,9 +31,9 @@ export class AnimeController {
 
   async create(req: Request, res: Response, next: NextFunction) {
     try {
-      const finalTask = await this.repo.create(req.body);
+      const finalData = await this.repo.create(req.body);
       res.status(201);
-      res.json(finalTask);
+      res.json(finalData);
     } catch (error) {
       next(error);
     }
@@ -42,8 +42,8 @@ export class AnimeController {
   async update(req: Request, res: Response, next: NextFunction) {
     try {
       const { id } = req.params;
-      const finalTask = await this.repo.update(id, req.body);
-      res.json(finalTask);
+      const finalData = await this.repo.update(id, req.body);
+      res.json(finalData);
     } catch (error) {
       next(error);
     }

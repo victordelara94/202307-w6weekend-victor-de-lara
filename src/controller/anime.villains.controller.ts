@@ -19,6 +19,8 @@ export class AnimeVillainsController extends Controller<AnimeVillain> {
       req.body.creator = user.id;
       const finalData = await this.repo.create(req.body);
       user.villainsAdded.push(finalData);
+      userRepo.update(user.id, user);
+      res.status(201);
       res.send(finalData);
     } catch (error) {
       next(error);
