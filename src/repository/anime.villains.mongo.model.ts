@@ -18,5 +18,18 @@ const villainSchema = new Schema<AnimeVillain>({
     type: String,
     required: true,
   },
+  creator: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
 });
-export const VillainModel = model('Note', villainSchema, 'villains');
+villainSchema.set('toJSON', {
+  transform(_document, returnedObject) {
+    returnedObject.id = returnedObject._id;
+    delete returnedObject._id;
+    delete returnedObject.__v;
+    delete returnedObject.passwd;
+  },
+});
+
+export const VillainModel = model('AnimeVillain', villainSchema, 'villains');

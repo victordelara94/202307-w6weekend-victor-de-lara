@@ -1,5 +1,5 @@
 import { WithId } from '../types/id';
-import { User } from './user';
+import { User } from './user.js';
 
 export type AnimeVillainNoId = {
   anime: string;
