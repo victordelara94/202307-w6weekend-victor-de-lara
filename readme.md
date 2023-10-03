@@ -1,22 +1,11 @@
-# Week 7 - Challenge 2
+# Back-end del Proyecto de Personajes de Anime
+Este repositorio contiene la parte de back-end de un proyecto de personajes de anime desarrollado con Express.js, Node.js, MongoDB. El servidor de back-end se encarga de gestionar las solicitudes HTTP y las interacciones con la base de datos MongoDB. Las responsabilidades del repositorio están divididas en varias capas:
 
-## API REST Things I already know / Lo que queráis (IV)
+# Capa Repository
+El repositorio es el intermediario entre la base de datos y nuestro Back, usando los distintos métodos que nos aporta el modelo de mongoose. Y devuelve a nuestro controller la información de MongoDB para que retorne la respuesta que hayamos decidido en nuestro controller. 
 
-### Continuamos el API REST del Challenge anterior, que:
+# Capa Controller
+La capa de controlador es responsable de procesar las solicitudes HTTP y de gestionar la lógica de la aplicación. Aquí es donde se definen y exportan las funciones que manejan las operaciones CRUD en los personajes de anime.
 
-se conecte a un fichero JSON, para manipular recursos de tipo cosas que ya sé (o cualquier otro).
-un segundo endpoint de Films (??) utiliza un repo que conecta con MongoDB usando Mongoose
-Añadimos Users relacionándolo con Films (??)
-
-El modelo de datos estará representado como "entity" en una carpeta/fichero independiente.
-Las rutas son /register y /login
-El repositorio y el controller son clases que se instancian en el Router.
-El interface del repositorio se inyecta en el controller (inversión de dependencias).
-Les errores se controlan mediante un middleware de errores.
-/register registra usuarios /login comprueba el login y si es correcto devuelve los datos del usuario (sin token)
-
-Actualizamos [Post] /Films (??) -> create Films (??)
-
-Se testa el 100% del backend completo: Things & Films & User & All.
-
-Se publica en Render (https://render.com/)
+# Capa Router
+La capa de enrutador se encarga de dirigir las solicitudes HTTP a los controladores y middlewares correspondientes para ciertas rutas. 
